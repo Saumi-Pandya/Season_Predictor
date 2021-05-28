@@ -13,17 +13,24 @@ class App extends React.Component {
     );
   }
 
+  renderContent(){
+    if (this.state.errorMessage && !this.state.lat) {
+        return <div>Error: {this.state.errorMessage}</div>;
+      }
+  
+      if (!this.state.errorMessage && this.state.lat) {
+        return <SeasonDisplay lat={this.state.lat} />;
+      }
+  
+      return  <Spinner message="Need access to your location to proceed"/>;
+  };
+
   // React says we have to define render!!
   render() {
-    if (this.state.errorMessage && !this.state.lat) {
-      return <div>Error: {this.state.errorMessage}</div>;
-    }
-
-    if (!this.state.errorMessage && this.state.lat) {
-      return <SeasonDisplay lat={this.state.lat} />;
-    }
-
-    return  <Spinner message="Need access to your location to proceed"/>;
+        return (
+        <div>
+            {this.renderContent()}
+        </div>);
   }
 }
 
