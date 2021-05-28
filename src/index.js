@@ -37,13 +37,6 @@ class App extends React.Component {
 ReactDOM.render(<App />, document.querySelector('#root'));
 
 
-
-
-
-
-
-
-
 /*  constructor(props){
          super(props);
 
